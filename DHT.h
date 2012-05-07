@@ -1,5 +1,8 @@
-
-#include <WProgram.h>
+#if ARDUINO >= 100
+ #include "Arduino.h"
+#else
+ #include "WProgram.h"
+#endif
 
 /* DHT library 
 
@@ -26,7 +29,8 @@ class DHT {
  public:
   DHT(uint8_t pin, uint8_t type);
   void begin(void);
-  float readTemperature(void);
+  float readTemperature(bool S=false);
+  float convertCtoF(float);
   float readHumidity(void);
 
 };
